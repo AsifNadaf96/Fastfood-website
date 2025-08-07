@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clean Search Bar</title>
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 40px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  border: 2px solid #4A90E2;
+  border-radius: 50px;
+  padding: 5px 10px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.search-wrapper:focus-within {
+  box-shadow: 0 0 8px #4A90E2;
+}
+
+.search-box {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 50px;
+}
+
+.search-btn {
+
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #357ABD;
+}
+
+</style>
+</head>
+<body>
+
+  <div class="search-wrapper">
+    <input type="text" class="search-box" placeholder="Search for items...">
+    <button class="search-btn">
+      <span>🔍</span>
+    </button>
+  </div>
+
+</body>
+</html>

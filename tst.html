@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fast Food Express</title>
+  <style>
+    /* YOUR ORIGINAL CSS (Unchanged) */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body {font-family: Arial, sans-serif;background: #f9f9f9;}
+    nav {
+      display: flex;justify-content: space-between;align-items: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;padding: 10px 20px;position: sticky;top: 0;z-index: 1000;
+    }
+    .nav-title {font-size: 1.8rem;}
+    .menu-toggle {
+      display: none;font-size: 28px;cursor: pointer;color: white;
+    }
+    .nav-links {
+      list-style: none;display: flex;gap: 20px;align-items: center;
+    }
+    .nav-links li a {
+      color: white;text-decoration: none;font-size: 1rem;padding: 3px 7px;
+      background-color: transparent;border-color: white;border-radius: 6px;
+      cursor: pointer;font-weight: bold;transition: 0.3s ease;
+    }
+    .nav-links li a:hover {background-color: white;color: black;}
+    .search-wrapper {
+      display: flex;align-items: center;justify-content: center;
+      background-color: rgba(255, 255, 270, 0.15);
+      border: 1.5px solid #ffffff80;border-radius: 50px;
+      padding: 5px 10px;backdrop-filter: blur(8px);
+      transition: all 0.3s ease;width: 100%;max-width: 460px;margin: 0 auto;
+    }
+    .search-wrapper:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      border-color: #ffffffcc;
+    }
+    .search-box {
+      flex: 1;border: none;outline: none;background: transparent;
+      color: white;font-size: 13px;padding: 8px 12px;border-radius: 50px;
+    }
+    .search-box::placeholder {
+      color: #ffffffcc;font-style: italic;
+    }
+    .search-btn {
+      background-color: #22528a;color: white;border: none;
+      padding: 8px 16px;border-radius: 50px;font-size: 16px;
+      cursor: pointer;transition: background 0.3s ease;
+    }
+    .search-btn:hover {background-color: #357ABD;}
+    .hero {
+      background: url("demo.png") center center/cover no-repeat;
+      height: 90vh;display: flex;align-items: center;justify-content: center;
+      text-align: center;color: white;
+    }
+    .hero-content {
+      background: rgba(0, 0, 0, 0.6);padding: 30px;border-radius: 10px;
+    }
+    .hero .btn {
+      display: inline-block;margin-top: 15px;padding: 10px 20px;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;text-decoration: none;border-radius: 5px;
+    }
+    .menu-item {
+      position: relative;height: 200px;background-size: cover;
+      background-position: center;border-radius: 12px;
+      overflow: hidden;box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .menu-item:hover {transform: scale(1.01);}
+    .menu-overlay {
+      position: absolute;bottom: 0;width: 100%;padding: 15px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      color: white;text-align: center;
+    }
+    .about, .contact {
+      padding: 40px 20px;background: #eee;text-align: center;
+    }
+    footer {
+      background: #0f2027;color: white;padding: 20px;text-align: center;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;position: absolute;top: 60px;right: 0;
+        background-color: #203a43;width: 100%;display: none;
+      }
+      .nav-links.active {display: flex;}
+      .nav-links li {padding: 10px 0;text-align: center;}
+      .search-form {margin: 10px auto;width: 90%;}
+      .search-wrapper {margin: 10px 0;width: 90%;max-width: 100%;}
+      .nav-title{font-size: 15px;}
+      .search-form input {width: 100%;}
+      .hero{height: 550px;}
+      .menu-toggle {display: block;margin-left: 12px;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1 class="nav-title">Fast Food</h1>
+    <div class="search-wrapper">
+      <input type="text" class="search-box" placeholder="Search for items...">
+      <button class="search-btn">🔍</button>
+    </div>
+    <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#menu">MENU</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="login.html" target="_blank">LOGIN</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <h2>Welcome to Fast Food Express</h2>
+      <p>Delicious meals delivered fast and fresh.</p>
+      <a href="#menu" class="btn">Explore Menu</a>
+    </div>
+  </header>
+
+  <section class="menu-section" id="menu">
+    <h2 style="text-align:center;">Our Menu</h2>
+    <div class="menu-grid" id="menuGrid"></div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>At Fast Food Express, we believe great taste should never make you wait. From juicy burgers to cheesy pizzas, we deliver your favorites hot and fresh. Fast service, bold flavors — that's our promise.</p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: zommdeli@gmail.com | Phone: +91-9972146138</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Fast Food Express - Fresh Taste, Fast Delivery. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const searchInput = document.querySelector(".search-box");
+    const searchBtn = document.querySelector(".search-btn");
+    const menuGrid = document.getElementById("menuGrid");
+
+    const menuData = [
+      { title: "Burger", image: "burger.jpg", description: "Juicy grilled beef patty with fresh veggies." },
+      { title: "Pizza", image: "pizza.jpg", description: "Loaded with cheese, toppings, and flavor." },
+      { title: "Sandwiches", image: "sandwich.jpg", description: "Toasted bread filled with delicious fillings." },
+      { title: "Pasta", image: "pasta.jpg", description: "Creamy and spicy pasta with cheese." },
+      { title: "Fries", image: "fries.jpg", description: "Crispy golden fries served hot." },
+      { title: "Drinks", image: "drinks.jpg", description: "Refreshing soft drinks and shakes." }
+    ];
+
+    function renderMenuItems(data) {
+      menuGrid.innerHTML = "";
+      if (data.length === 0) {
+        menuGrid.innerHTML = "<p style='text-align:center; width:100%;'>No items found</p>";
+        return;
+      }
+      data.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "menu-item";
+        div.style.backgroundImage = `url('${item.image}')`;
+        div.innerHTML = `
+          <div class="menu-overlay">
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+          </div>
+        `;
+        menuGrid.appendChild(div);
+      });
+    }
+
+    // Initial load
+    renderMenuItems(menuData);
+
+    // Toggle nav menu
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Search function
+    function searchMenu() {
+      const searchValue = searchInput.value.toLowerCase();
+      const filtered = menuData.filter(item =>
+        item.title.toLowerCase().includes(searchValue)
+      );
+      renderMenuItems(filtered);
+    }
+
+    // Search on input or button click
+   searchInput.addEventListener("input", searchMenu);
+searchBtn.addEventListener("click", searchMenu);
+
+// 🆕 Search when pressing Enter key
+searchInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); // optional: stops form submission if inside a <form>
+    searchMenu();
+  }
+});
+
+  </script>
+</body>
+</html>
