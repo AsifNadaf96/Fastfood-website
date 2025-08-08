@@ -21,7 +21,6 @@
       <li><a href="#about">ABOUT</a></li>
       <li><a href="#contact">CONTACT</a></li>
       <li><a href="login.html" target="_blank">LOGIN</a></li>
-
     </ul>
   </nav>
 
@@ -41,7 +40,7 @@
       <div class="menu-overlay">
         <h3>VegBurger</h3>
         <p>Crispy, crunchy, and 100% vegetarian delight.</p>
-            <button onclick="placeOrder('VegBurger', 200)">Order</button>
+        <button onclick="checkLoginAndOrder('VegBurger', 200)">Order</button>
       </div>
     </div>
 
@@ -49,7 +48,7 @@
       <div class="menu-overlay">
         <h3>ChickenBurger</h3>
         <p>Golden fried or grilled to juicy tenderness.</p>
-        <button onclick="placeOrder('ChickenBurger', 250)">Order</button>
+        <button onclick="checkLoginAndOrder('ChickenBurger', 250)">Order</button>
       </div>
     </div>
 
@@ -57,7 +56,7 @@
       <div class="menu-overlay">
         <h3>CheeseBurger</h3>
         <p>Melting cheese over juicy perfection — the classic favorite.</p>
-        <button onclick="placeOrder('CheeseBurger', 250)">Order</button>
+        <button onclick="checkLoginAndOrder('CheeseBurger', 250)">Order</button>
       </div>
     </div>
 
@@ -65,7 +64,7 @@
       <div class="menu-overlay">
         <h3>Tacos</h3>
         <p>Crunchy shells filled with spicy meat and zesty veggies.</p>
-        <button onclick="placeOrder('Tacos', 170)">Order</button>
+        <button onclick="checkLoginAndOrder('Tacos', 170)">Order</button>
       </div>
     </div>
 
@@ -73,7 +72,7 @@
       <div class="menu-overlay">
         <h3>Pizza</h3>
         <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="placeOrder('Pizza', 200)">Order</button>
+        <button onclick="checkLoginAndOrder('Pizza', 200)">Order</button>
       </div>
     </div>
 
@@ -81,7 +80,7 @@
       <div class="menu-overlay">
         <h3>Sandwich</h3>
         <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="placeOrder('Sandwich', 120)">Order</button>
+        <button onclick="checkLoginAndOrder('Sandwich', 120)">Order</button>
       </div>
     </div>
 
@@ -89,7 +88,7 @@
       <div class="menu-overlay">
         <h3>SubSandwich</h3>
         <p>Layered with meats, cheese, veggies — and love.</p>
-        <button onclick="placeOrder('SubSandwich', 180)">Order</button>
+        <button onclick="checkLoginAndOrder('SubSandwich', 180)">Order</button>
       </div>
     </div>
 
@@ -97,7 +96,7 @@
       <div class="menu-overlay">
         <h3>Spring Rolls</h3>
         <p>Crispy wrappers with flavorful veggie or meat fillings.</p>
-        <button onclick="placeOrder('springrolls', 100)">Order</button>
+        <button onclick="checkLoginAndOrder('springrolls', 100)">Order</button>
       </div>
     </div>
 
@@ -105,7 +104,7 @@
       <div class="menu-overlay">
         <h3>GrilledSandwich</h3>
         <p>Toasted, crispy and melted to perfection.</p>
-        <button onclick="placeOrder('GrilledSandwich', 180)">Order</button>
+        <button onclick="checkLoginAndOrder('GrilledSandwich', 180)">Order</button>
       </div>
     </div>
 
@@ -113,7 +112,7 @@
       <div class="menu-overlay">
         <h3>Pasta</h3>
         <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="placeOrder('Pasta', 150)">Order</button>
+        <button onclick="checkLoginAndOrder('Pasta', 150)">Order</button>
       </div>
     </div>
 
@@ -121,7 +120,7 @@
       <div class="menu-overlay">
         <h3>Hot Dogs</h3>
         <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="placeOrder('hotdogs', 150)">Order</button>
+        <button onclick="checkLoginAndOrder('hotdogs', 150)">Order</button>
       </div>
     </div>
 
@@ -129,7 +128,7 @@
       <div class="menu-overlay">
         <h3>Fries</h3>
         <p>Crispy golden fries served hot.</p>
-        <button onclick="placeOrder('Fries', 120)">Order</button>
+        <button onclick="checkLoginAndOrder('Fries', 120)">Order</button>
       </div>
     </div>
 
@@ -137,7 +136,7 @@
       <div class="menu-overlay">
         <h3>Ice-creams</h3>
         <p>One scoop is never enough — cool and creamy indulgence.</p>
-        <button onclick="placeOrder('Ice-creams', 100)">Order</button>
+        <button onclick="checkLoginAndOrder('Ice-creams', 100)">Order</button>
       </div>
     </div>
 
@@ -145,7 +144,7 @@
       <div class="menu-overlay">
         <h3>Drinks</h3>
         <p>Refreshing soft drinks and shakes.</p>
-        <button onclick="placeOrder('Drinks', 100)">Order</button>
+        <button onclick="checkLoginAndOrder('Drinks', 100)">Order</button>
       </div>
     </div>
 
@@ -169,15 +168,42 @@
   </p>
 </section>
 
+<section class="contact" id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: zommdeli@gmail.com | Phone: +91-9972146138</p>
+</section>
 
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: zommdeli@gmail.com | Phone: +91-9972146138</p>
-  </section>
+<footer>
+  <p>&copy; 2025 Fast Food Express - Fresh Taste,Fast Delivery. All rights reserved.</p>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 Fast Food Express - Fresh Taste,Fast Delivery. All rights reserved.</p>
-  </footer>
- <script src="script.js"></script>
+<script>
+function checkLoginAndOrder(itemName, price) {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        alert("Please log in to place an order.");
+        window.location.href = "login.html";
+        return;
+    }
+    // Proceed with placing the order
+    placeOrder(itemName, price);
+}
+
+function placeOrder(itemName, price) {
+    fetch("http://localhost:5000/place-order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({ item: itemName, price })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message))
+    .catch(err => console.error(err));
+}
+</script>
+
+<script src="script.js"></script>
 </body>
 </html>

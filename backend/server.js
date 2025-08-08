@@ -1,15 +1,15 @@
 import dotenv from "dotenv";
-dotenv.config(); // must be called before using process.env
+dotenv.config();
+
 import express from "express";
 import cors from "cors";
-import connectDB from "./db/dbconnect.js"; // ✅ adjust path if needed
+import connectDB from "./db/dbconnect.js";
 
-// ✅ Use `import` instead of `require`:
 import userRoutes from "./routes/userroutes.js";
 import menuRoutes from "./routes/menuroutes.js";
 import orderRoutes from "./routes/orderroutes.js";
+import authMiddleware from "./middleware/authMiddleware.js"; // ✅ NEW
 
-dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -20,16 +20,15 @@ app.use(express.json());
 // Connect DB
 connectDB();
 
-// Mount routes
+// Routes
 app.use("/api/auth", userRoutes);
 app.use("/api/menu", menuRoutes);
-app.use("/api/orders", orderRoutes);
+app.use("/api/orders", authMiddleware, orderRoutes); // ✅ Protected
+
 app.get("/", (req, res) => {
   res.send("Fast Food API is running 🚀");
 });
 
-
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
