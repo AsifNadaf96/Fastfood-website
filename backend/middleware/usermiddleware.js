@@ -13,3 +13,4 @@ const userMiddleware = (req, res, next) => {
         return res.status(401).json({ error: 'Invalid token' });
     }
 }
+ export default userMiddleware

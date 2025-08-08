@@ -8,7 +8,7 @@ import connectDB from "./db/dbconnect.js";
 import userRoutes from "./routes/userroutes.js";
 import menuRoutes from "./routes/menuroutes.js";
 import orderRoutes from "./routes/orderroutes.js";
-import authMiddleware from "./middleware/authMiddleware.js"; // ✅ NEW
+import authMiddleware from "./middleware/usermiddleware.js"; // ✅ NEW
 
 const app = express();
 const PORT = process.env.PORT || 5000;
