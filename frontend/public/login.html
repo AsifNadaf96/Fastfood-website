@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <title>Login - Fast Food Express</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="login-box">
-      <h2>Login</h2>
-      <form id="loginForm">
-  <input type="email" id="loginEmail" placeholder="Email" required />
-  <input type="password" id="loginPassword" placeholder="Password" required />
-  <button type="submit" class="login-btn">Login</button>
-</form>
-
-      <p>Don't have an account? <a href="sign.html">Sign Up</a></p>
-    </div>
+  <div class="login-box">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <a class="forgot-password" href="#">Forgot Password?</a>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account?
+      <a href="sign.html">Register</a>
+    </p>
   </div>
-
   <script src="loginsignup.js"></script>
 </body>
 </html>

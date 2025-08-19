@@ -1,20 +1,20 @@
-import jwt from "jsonwebtoken";
+import express from "express";
+import { placeOrder, getOrders ,removeOrderItem } from "../controller/ordercontroller.js";
+import { authenticate } from "../middleware/usermiddleware.js";
 
-const usermiddleware = (req, res, next) => {
-  const token = req.header("Authorization");
+const router = express.Router();
 
-  if (!token) {
-    return res.status(401).json({ message: "No token, authorization denied" });
-  }
-
+router.post("/", authenticate, placeOrder);
+router.get("/", authenticate, async (req, res, next) => {
   try {
-    // Token format: "Bearer <token>"
-    const decoded = jwt.verify(token.split(" ")[1], process.env.JWT_SECRET);
-    req.user = decoded; // Attach user info from token
-    next();
-  } catch (error) {
-    res.status(401).json({ message: "Token is not valid" });
+    await getOrders(req, res);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Unexpected error" });
   }
-};
+});
+router.get("/:userId", authenticate, getOrders);
+router.delete("/:orderId/item/:itemName", authenticate, removeOrderItem);
 
-export default usermiddleware;
+
+export default router;

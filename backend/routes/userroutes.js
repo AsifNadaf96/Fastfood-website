@@ -1,12 +1,12 @@
-import express from 'express';
+import express from "express";
+import { register, login ,getProfile } from "../controller/usercontroller.js";
+import { authenticate } from "../middleware/usermiddleware.js";
 
 const router = express.Router();
-import { deleteuser, forgotpassword, login, register } from '../controller/usercontroller.js';
 
-router.post('/register', register);
-router.post('/login', login);
-router.patch('/forgotpassword/:id', forgotpassword);
-router.delete('/deleteuser/:id', deleteuser);
+router.post("/register", register);
+router.post("/login", login);
+router.get("/profile", authenticate, getProfile);
 
 
 export default router;

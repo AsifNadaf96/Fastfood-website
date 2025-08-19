@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Place Order</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Fast Food Orders</h1>
+    <button id="logoutBtn" style="display:none;">Logout</button>
+  </header>
+
+  <main>
+    <h2>Place Your Order</h2>
+    <form id="orderForm">
+      <input type="text" id="foodItem" placeholder="Food Item" required />
+      <input type="number" id="quantity" placeholder="Quantity" required min="1" />
+      <button type="submit">Place Order</button>
+    </form>
+    <p id="message"></p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="placeorder.js"></script>
+</body>
+</html>

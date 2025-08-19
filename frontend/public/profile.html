@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Profile - Fast Food Express</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      margin: 0;
+      color: #1c263e;
+    }
+    nav {
+      background: #3250af;
+      color: #fff;
+      padding: 16px 0 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-title {
+      margin: 0 0 0 25px;
+      font-size: 2rem;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0 25px 0 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 28px;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .profile-section {
+      max-width: 550px;
+      margin: 46px auto 0 auto;
+      padding: 0 20px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 5px 28px rgba(60,76,117,0.09);
+    }
+    .profile-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 30px 32px 30px;
+    }
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #eef3fb;
+      object-fit: cover;
+      margin-bottom: 18px;
+      border: 2px solid #3250af;
+    }
+    .profile-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #3250af;
+      margin-bottom: 7px;
+    }
+    .profile-email {
+      font-size: 1.08rem;
+      color: #596080;
+      margin-bottom: 18px;
+    }
+    .profile-details {
+      width: 100%;
+      margin-bottom: 14px;
+    }
+    .profile-details label {
+      color: #789;
+      font-size: 0.98rem;
+      margin-right: 9px;
+    }
+    .profile-details span {
+      font-size: 1.08rem;
+      color: #222;
+      font-weight: 500;
+    }
+    .profile-edit-btn {
+      background: #3250af;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 20px;
+      font-size: 1rem;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .profile-edit-btn:hover {
+      background: #20357c;
+    }
+
+    @media (max-width: 700px) {
+      .profile-section { max-width: 98vw; border-radius: 10px; }
+      .profile-card { padding: 22px 10px 20px 10px; }
+      .profile-img { width: 80px; height: 80px; }
+    }
+
+    footer {
+      color: #999;
+      background: none;
+      font-size: 1rem;
+      padding: 24px 0 10px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1 class="nav-title">Fast Food Express</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="orders.html">ORDERS</a></li>
+      <li><a href="orders-profile.html">PROFILE</a></li>
+    </ul>
+  </nav>
+
+  <section class="profile-section">
+    <div class="profile-card" id="profileCard">
+      <img src="https://ui-avatars.com/api/?name=User&background=eef3fb&color=3250af&size=220" alt="Profile" class="profile-img" id="profileImg">
+      <div class="profile-name" id="profileName">User Name</div>
+      <div class="profile-email" id="profileEmail">user@email.com</div>
+      <div class="profile-details"><label>Phone:</label> <span id="profilePhone">+91-9876543210</span></div>
+      <div class="profile-details"><label>Address:</label> <span id="profileAddress">123, Street, City, PIN 400001</span></div>
+      <button class="profile-edit-btn" onclick="editProfile()">Edit Profile</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Fast Food Express. All rights reserved.</p>
+  </footer>
+
+ <script>
+  const API_BASE_URL = "http://localhost:5000";
+
+  async function loadUserProfile() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please login to view your profile.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/users/profile`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (!res.ok) throw new Error("Failed to load user profile");
+
+      const user = await res.json();
+      document.getElementById("profileName").textContent = user.name ?? '';
+      document.getElementById("profileEmail").textContent = user.email ?? '';
+      document.getElementById("profilePhone").textContent = user.phone ?? '';
+      document.getElementById("profileAddress").textContent = user.address ?? '';
+      document.getElementById("profileImg").src =
+        user.img ||
+        `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name ?? "User")}&background=eef3fb&color=3250af&size=220`;
+    } catch (err) {
+      alert("Error loading your profile: " + err.message);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadUserProfile);
+
+  function editProfile() { alert("Edit Profile feature coming soon!"); }
+</script>
+
+
+</body>
+</html>

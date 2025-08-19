@@ -2,28 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fast Food Express</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
+  <!-- Navbar -->
   <nav>
     <h1 class="nav-title">Fast Food</h1>
     <div class="search-wrapper">
       <input type="text" class="search-box" placeholder="Search for items...">
       <button class="search-btn">🔍</button>
     </div>
-    <div class="menu-toggle" id="menuToggle">&#9776;</div>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav-links">
       <li><a href="#home">HOME</a></li>
       <li><a href="#menu">MENU</a></li>
       <li><a href="#about">ABOUT</a></li>
-      <li><a href="#contact">CONTACT</a></li>
-      <li><a href="login.html" target="_blank">LOGIN</a></li>
+      <li id="userIconNav"></li>
     </ul>
   </nav>
 
+  <!-- Hero Section (backgrounds behind navbar and intro) -->
   <header class="hero" id="home">
     <div class="hero-content">
       <h2>Welcome to Fast Food Express</h2>
@@ -32,178 +31,60 @@
     </div>
   </header>
 
+  <!-- Menu Section (dynamic grid is injected by JS) -->
   <section class="menu-section" id="menu">
-  <h2>Our Menu</h2>
-  <div class="menu-grid">
+    <h2>Our Menu</h2>
+    <div class="menu-grid"></div>
+  </section>
 
-    <div class="menu-item" style="background-image: url('images/vegburger.jpg');">
-      <div class="menu-overlay">
-        <h3>VegBurger</h3>
-        <p>Crispy, crunchy, and 100% vegetarian delight.</p>
-        <button onclick="checkLoginAndOrder('VegBurger', 200)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/chickenburger.jpg');">
-      <div class="menu-overlay">
-        <h3>ChickenBurger</h3>
-        <p>Golden fried or grilled to juicy tenderness.</p>
-        <button onclick="checkLoginAndOrder('ChickenBurger', 250)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/cheeseburger.jpg');">
-      <div class="menu-overlay">
-        <h3>CheeseBurger</h3>
-        <p>Melting cheese over juicy perfection — the classic favorite.</p>
-        <button onclick="checkLoginAndOrder('CheeseBurger', 250)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/tacos.jpg');">
-      <div class="menu-overlay">
-        <h3>Tacos</h3>
-        <p>Crunchy shells filled with spicy meat and zesty veggies.</p>
-        <button onclick="checkLoginAndOrder('Tacos', 170)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/pizza.jpg');">
-      <div class="menu-overlay">
-        <h3>Pizza</h3>
-        <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="checkLoginAndOrder('Pizza', 200)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/sandwiches.jpg');">
-      <div class="menu-overlay">
-        <h3>Sandwich</h3>
-        <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="checkLoginAndOrder('Sandwich', 120)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/subsandwich.jpg');">
-      <div class="menu-overlay">
-        <h3>SubSandwich</h3>
-        <p>Layered with meats, cheese, veggies — and love.</p>
-        <button onclick="checkLoginAndOrder('SubSandwich', 180)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/springrolls.jpg');">
-      <div class="menu-overlay">
-        <h3>Spring Rolls</h3>
-        <p>Crispy wrappers with flavorful veggie or meat fillings.</p>
-        <button onclick="checkLoginAndOrder('springrolls', 100)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/grilledsandwich.jpg');">
-      <div class="menu-overlay">
-        <h3>GrilledSandwich</h3>
-        <p>Toasted, crispy and melted to perfection.</p>
-        <button onclick="checkLoginAndOrder('GrilledSandwich', 180)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/pasta.jpg');">
-      <div class="menu-overlay">
-        <h3>Pasta</h3>
-        <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="checkLoginAndOrder('Pasta', 150)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/hotdogs.jpg');">
-      <div class="menu-overlay">
-        <h3>Hot Dogs</h3>
-        <p>Loaded with cheese, toppings, and flavor.</p>
-        <button onclick="checkLoginAndOrder('hotdogs', 150)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/fries.jpg');">
-      <div class="menu-overlay">
-        <h3>Fries</h3>
-        <p>Crispy golden fries served hot.</p>
-        <button onclick="checkLoginAndOrder('Fries', 120)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/icecream.jpg');">
-      <div class="menu-overlay">
-        <h3>Ice-creams</h3>
-        <p>One scoop is never enough — cool and creamy indulgence.</p>
-        <button onclick="checkLoginAndOrder('Ice-creams', 100)">Order</button>
-      </div>
-    </div>
-
-    <div class="menu-item" style="background-image: url('images/drinks.jpg');">
-      <div class="menu-overlay">
-        <h3>Drinks</h3>
-        <p>Refreshing soft drinks and shakes.</p>
-        <button onclick="checkLoginAndOrder('Drinks', 100)">Order</button>
-      </div>
-    </div>
-
+  <!-- About Section -->
+<!-- About Section -->
+<section class="about-section" id="about">
+  <h2>About Us</h2>
+  <div class="about-content">
+    <p>
+      We believe in fresh, tasty food delivered with speed and care. Our menu is crafted to please every palate!
+    </p>
+    <p>
+      At Fast Food Express, we are passionate about quality ingredients and excellent customer service. Whether you're craving a quick snack or a hearty meal, we bring the best of fast food right to your doorstep.
+    </p>
+    <p>
+      Join thousands of satisfied customers and experience delicious meals delivered hot and fresh every time!
+    </p>
   </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="about-section">
-  <h2>About Us</h2>
-  <p>
-    Welcome to Fast Food Express — your go-to destination for quick, delicious, and affordable meals! 
-    Whether you're craving cheesy pizzas, spicy burgers, crispy fries, or refreshing beverages, 
-    we've got something to satisfy every taste bud.
-  </p>
-  <p>
-    Our mission is to serve high-quality fast food with lightning-fast delivery and top-notch service. 
-    From classic favorites to exciting new flavors, we’re committed to making your food experience unforgettable.
-  </p>
-  <p>
-    We also offer online ordering, flexible pickup options, and frequent combo deals to give you more value every time you visit.
-  </p>
-</section>
-
-<section class="contact" id="contact">
+  <section class="contact-section" id="contact">
   <h2>Contact Us</h2>
-  <p>Email: zommdeli@gmail.com | Phone: +91-9972146138</p>
+  <p>Have questions or feedback? We're here to help!</p>
+  <p>Email: <a href="mailto:zommdeli@gmail.com">zommdeli@gmail.com</a></p>
+  <p>Phone: +91 9972146138</p>
+  <p>Address: Athani </p>
 </section>
 
-<footer>
-  <p>&copy; 2025 Fast Food Express - Fresh, Taste,Fast Delivery. All rights reserved.</p>
-</footer>
 
-<script>
-function checkLoginAndOrder(itemName, price) {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        alert("Please log in to place an order.");
-        window.location.href = "login.html";
-        return;
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Fast Food Express. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Show user initial icon or LOGIN link in navbar
+    function updateNavbarUserIcon() {
+      const userIconNav = document.getElementById("userIconNav");
+      const username = localStorage.getItem("username");
+      if (username) {
+        userIconNav.innerHTML = `
+          <div class="user-icon" title="${username}">
+            ${username.charAt(0).toUpperCase()}
+          </div>
+        `;
+      } else {
+        userIconNav.innerHTML = `<a href="login.html">LOGIN</a>`;
+      }
     }
-    // Proceed with placing the order
-    placeOrder(itemName, price);
-}
-
-function placeOrder(itemName, price) {
-    fetch("http://localhost:5000/place-order", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
-        },
-        body: JSON.stringify({ item: itemName, price })
-    })
-    .then(res => res.json())
-    .then(data => alert(data.message))
-    .catch(err => console.error(err));
-}
-</script>
-
-<script src="script.js"></script>
+    updateNavbarUserIcon();
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>

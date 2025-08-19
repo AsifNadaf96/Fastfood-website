@@ -1,14 +1,17 @@
-*{
+/* ===== Global Reset ===== */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===== Body ===== */
 body {
   font-family: Arial, sans-serif;
   background: #f9f9f9;
 }
 
+/* ===== Navbar ===== */
 nav {
   display: flex;
   height: 60px;
@@ -20,7 +23,6 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-
 }
 
 .nav-title {
@@ -39,44 +41,36 @@ nav {
   display: flex;
   gap: 20px;
   align-items: center;
-  
 }
 
 .nav-links li a {
   color: white;
   text-decoration: none;
   font-size: 1rem;
-  padding: 3px 7px;
-  background-color: transparent;
-  color:white;
-  border-color: white;
+  padding: 4px 8px;
   border-radius: 6px;
-  cursor: pointer;
   font-weight: bold;
   transition: 0.3s ease;
-} 
+}
+
 .nav-links li a:hover {
   background-color: white;
   color: black;
 }
 
+/* ===== Search Bar ===== */
 .search-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
   background-color: rgba(255, 255, 270, 0.15);
   border: 1.5px solid #ffffff80;
   border-radius: 50px;
   padding: 5px 10px;
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
-  width: 100%;
   height: 40px;
   max-width: 460px;
-  margin: 0 auto;
 }
-
-
 
 .search-wrapper:hover {
   background-color: rgba(255, 255, 255, 0.25);
@@ -86,14 +80,12 @@ nav {
 .search-box {
   flex: 1;
   border: none;
-  height: 10px;
   outline: none;
   background: transparent;
   color: white;
   font-size: 13px;
   padding: 8px 12px;
   border-radius: 50px;
-  
 }
 
 .search-box::placeholder {
@@ -102,7 +94,7 @@ nav {
 }
 
 .search-btn {
-  background-color:  rgba(255, 255, 255, 0.25);;
+  background-color: rgba(255, 255, 255, 0.25);
   color: white;
   border: none;
   padding: 6px 10px;
@@ -116,6 +108,23 @@ nav {
   background-color: #357ABD;
 }
 
+/* ===== User Icon After Login ===== */
+.user-icon {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 34px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 106, 0, 0.18);
+  cursor: pointer;
+}
+
+/* ===== Hero Section ===== */
 .hero {
   background: url("images/demo.png") center center/cover no-repeat;
   height: 90vh;
@@ -126,15 +135,15 @@ nav {
   color: white;
 }
 
-
 .hero-content {
   background: rgba(0, 0, 0, 0.6);
   padding: 30px;
   border-radius: 10px;
   transition: transform .3s ease;
 }
-.hero-content:hover{
-   transform: scale(1.04);
+
+.hero-content:hover {
+  transform: scale(1.04);
 }
 
 .hero .btn {
@@ -146,47 +155,58 @@ nav {
   text-decoration: none;
   border-radius: 5px;
 }
-.menu-section{
+
+/* ===== Menu Section ===== */
+.menu-section {
   padding: 40px 20px;
   background: #fff;
   display: flex;
-  flex-direction:column ;
+  flex-direction: column;
 }
+
 .menu-section h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.menu-grid{
+.menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
   gap: 40px;
-  background-color:	#f4f4f4;
+  background-color: #f4f4f4;
   padding: 20px;
-  justify-content: center;     
+  justify-content: center;
 }
 
 .menu-item {
-  width: 250px;             
+  width: 250px;
   height: 200px;
   position: relative;
   background-size: cover;
   background-position: center;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);  
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
   transition: transform .3s ease;
   margin: 10px;
 }
 
+.menu-item:hover {
+  transform: scale(1.04);
+}
+
+/* ===== Menu Overlay with price above button ===== */
 .menu-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
   color: white;
-  padding: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .menu-overlay h3 {
@@ -197,6 +217,12 @@ nav {
 .menu-overlay p {
   font-size: 12px;
   margin: 5px 0;
+}
+
+.menu-overlay strong {
+  display: block;
+  margin: 4px 0;
+  font-size: 14px;
 }
 
 .menu-overlay button {
@@ -216,31 +242,10 @@ nav {
   box-shadow: 0 4px 12px rgba(255, 106, 0, 0.6);
 }
 
-
-
-.menu-item:hover {
-  transform: scale(1.04);
-}
-
-.menu-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 15px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-  color: white;
-  text-align: center;
-}
-
-.about, .contact {
-  padding: 40px 20px;
-  background: #eee;
-  text-align: center;
-}
-
+/* ===== About Section ===== */
 .about-section {
   padding: 40px 20px;
-  background-color: #f8f8f8;
+  background: #eee;
   text-align: center;
 }
 
@@ -257,41 +262,37 @@ nav {
   color: #555;
   line-height: 1.6;
 }
-.login-box {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      width: 280px;
-      height: 380px;
-      color: white;
-    }
 
-    h2 {
-      margin-bottom: 20px;
-    }
+.contact-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
 
-    input {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
 
-    .forgot-password {
-      display: block;
-      text-align: right;
-      font-size: 12px;
-      margin-bottom: 10px;
-      color: #eee;
-      text-decoration: none;
-    }
+.contact-section p {
+  font-size: 1.1rem;
+  margin: 8px 0;
+}
 
-    
+.contact-section a {
+  color: #3250af;
+  text-decoration: none;
+}
 
+.contact-section a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===== Footer ===== */
 footer {
   background: #0f2027;
   color: white;
@@ -299,8 +300,63 @@ footer {
   text-align: center;
 }
 
+/* ===== User Icon & Dropdown Styles ===== */
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.user-icon {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 34px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(255, 106, 0, 0.18);
+  cursor: pointer;
+}
+
+/* Dropdown menu container (hidden by default) */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 42px;
+  right: 0;
+  min-width: 150px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  color: black; /* font color black before hover */
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f4f4f4;
+  /* keep your existing hover font color here */
+}
+
+
+/* Show dropdown when user-dropdown has 'show' class */
+.user-dropdown.show .dropdown-menu {
+  display: block;
+}
+
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-   .nav-links {
+  .nav-links {
     flex-direction: column;
     position: absolute;
     top: 60px;
@@ -309,50 +365,25 @@ footer {
     width: 100%;
     display: none;
   }
-
   .nav-links.active {
     display: flex;
   }
-
   .nav-links li {
     padding: 10px 0;
     text-align: center;
   }
-
-  .search-form {
+  .search-wrapper {
     margin: 10px auto;
     width: 90%;
-  }
- .search-wrapper {
-    margin: 10px 0;
-    width: 90%;
     max-width: 100%;
-
   }
-  .nav-title{
+  .nav-title {
     font-size: 15px;
   }
-
-  .search-form input {
-    width: 100%;
+  .menu-toggle {
+    display: block;
   }
-  .nav-links.active {
-    display: flex;
-  }
-  .hero{
+  .hero {
     height: 550px;
-  }
-
-  .nav-links li {
-    padding: 10px 0;
-    text-align: center;
-  }
-
- .menu-toggle {
-  display: block;
-  font-size: 28px;
-  cursor: pointer;
-  color: white;
-  margin-left: 12px;
   }
 }

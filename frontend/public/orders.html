@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Orders - Fast Food Express</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7fafc;
+      margin: 0;
+      color: #222;
+    }
+
+    nav {
+      background: #3250af;
+      color: #fff;
+      padding: 16px 0 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-title {
+      margin: 0 0 0 25px;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0 25px 0 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin-left: 28px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .orders-section {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      padding: 0 20px;
+    }
+
+    .orders-section h2 {
+      margin-bottom: 28px;
+      font-size: 2rem;
+      color: #3250af;
+    }
+
+    .orders-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .order-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(35,46,70,0.09);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .order-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .order-number {
+      font-weight: 700;
+      color: #333;
+    }
+
+    .order-date {
+      color: #888;
+      font-size: 0.95rem;
+    }
+
+    .order-items {
+      margin: 0 0 12px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+   .order-items li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* This puts the X at the far right */
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+
+    .item-qty {
+      margin-left: 7px;
+      font-size: 0.97rem;
+      color: #3250af;
+      background: #eef3fb;
+      border-radius: 7px;
+      padding: 2px 8px;
+    }
+
+    .order-total {
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: #23409f;
+    }
+
+    .order-status {
+      margin-left: 12px;
+      padding: 3px 9px;
+      border-radius: 7px;
+      background: #e6eaf0;
+      color: #3250af;
+      font-size: 0.97rem;
+    }
+
+    .no-orders {
+      color: #d23b3b;
+      background: #fff7f7;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-size: 1.08rem;
+      text-align: center;
+    }
+
+    .remove-btn {
+  background: transparent;
+  border: none;
+  color: #d23b3b;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+.remove-btn:hover {
+  color: #a11a1a;
+}
+
+
+  </style>
+</head>
+<body>
+  <nav>
+    <h1 class="nav-title">Fast Food Express</h1>
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="#menu">MENU</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li id="userIconNav"></li>
+    </ul>
+  </nav>
+
+  <section class="orders-section">
+    <h2>My Orders</h2>
+    <div id="ordersList" class="orders-list"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Fast Food Express. All rights reserved.</p>
+  </footer>
+<script src="orders.js"></script>
+</body>
+</html>
