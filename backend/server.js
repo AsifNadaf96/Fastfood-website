@@ -17,6 +17,7 @@ app.use(express.json());
 
 connectDB();
 
+app.use('/api/users', userRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/api/menu", menuRoutes);
 app.use("/api/orders", orderRoutes);

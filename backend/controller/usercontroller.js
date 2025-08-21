@@ -45,11 +45,23 @@ export const login = async (req, res) => {
 
 export const getProfile = async (req, res) => {
   try {
+    console.log("getProfile called. Req.user: ", req.user);
     const userId = req.user.id;
-    const user = await User.findById(userId);
+    const user = await usermodel.findById(userId);
+    console.log("User found:", user);
     if (!user) return res.status(404).json({ error: "User not found" });
-    res.json({ name: user.name, email: user.email, phone: user.phone, address: user.address, img: user.img });
+
+    res.json({
+      username: user.username,
+      email: user.email,
+      phone: user.phone,
+      address: user.address,
+      img: user.img
+    });
   } catch (err) {
+    console.error("Profile error:", err);
     res.status(500).json({ error: "Failed to load profile" });
   }
 };
+
+

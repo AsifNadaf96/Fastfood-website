@@ -9,6 +9,8 @@
 body {
   font-family: Arial, sans-serif;
   background: #f9f9f9;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* ===== Navbar ===== */
@@ -34,6 +36,8 @@ nav {
   font-size: 28px;
   cursor: pointer;
   color: white;
+  margin-left: auto;
+  margin-right: 8px;
 }
 
 .nav-links {
@@ -171,15 +175,17 @@ nav {
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 250px);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
   background-color: #f4f4f4;
   padding: 20px;
   justify-content: center;
 }
 
 .menu-item {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
+  min-width: 180px;
   height: 200px;
   position: relative;
   background-size: cover;
@@ -188,7 +194,7 @@ nav {
   overflow: hidden;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
   transition: transform .3s ease;
-  margin: 10px;
+  margin: 0 auto;
 }
 
 .menu-item:hover {
@@ -270,7 +276,10 @@ nav {
   text-align: center;
   font-family: Arial, sans-serif;
   color: #333;
+  background-color: #d9e8f5; /* Example: light blue background */
+  border-radius: 10px; /* optional rounding */
 }
+
 
 .contact-section h2 {
   font-size: 2rem;
@@ -290,7 +299,6 @@ nav {
 .contact-section a:hover {
   text-decoration: underline;
 }
-
 
 /* ===== Footer ===== */
 footer {
@@ -335,7 +343,7 @@ footer {
 }
 
 .dropdown-menu a {
-  color: black; /* font color black before hover */
+  color: black;
   padding: 10px 15px;
   display: block;
   text-decoration: none;
@@ -344,17 +352,22 @@ footer {
 
 .dropdown-menu a:hover {
   background-color: #f4f4f4;
-  /* keep your existing hover font color here */
 }
-
 
 /* Show dropdown when user-dropdown has 'show' class */
 .user-dropdown.show .dropdown-menu {
   display: block;
 }
 
-
 /* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .menu-grid {
+    gap: 20px;
+    padding-right: 4vw;
+    padding-left: 4vw;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
@@ -362,7 +375,7 @@ footer {
     top: 60px;
     right: 0;
     background-color: #203a43;
-    width: 100%;
+    width: 100vw;
     display: none;
   }
   .nav-links.active {
@@ -378,12 +391,93 @@ footer {
     max-width: 100%;
   }
   .nav-title {
-    font-size: 15px;
+    font-size: 1.15rem;
   }
   .menu-toggle {
     display: block;
   }
   .hero {
-    height: 550px;
+    height: 320px;
+    padding: 24px 10px;
+  }
+  .hero-content {
+    padding: 13px !important;
+    font-size: 1rem;
+  }
+  .dropdown-menu a {
+    font-size: 1rem;
+    padding: 17px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section, .contact-section {
+    padding: 8px 2vw;
+    font-size: 1rem;
+    max-width: 98vw;
+  }
+  .search-wrapper {
+    max-width: 240px;
+    margin: 10px auto;
+  }
+  .search-box {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 540px) {
+  .nav-title {
+    font-size: 13px;
+  }
+  .menu-grid {
+    padding: 3px;
+    gap: 9px;
+  }
+  .about-section h2 {
+    font-size: 1.2rem;
+  }
+  .contact-section {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 10px;
+  }
+  .menu-item {
+    width: 96vw;
+    max-width: 380px;
+    min-width: 150px;
+    height: 160px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 400px) {
+ .nav-title {
+    font-size: 0.95rem !important;
+  }
+  nav {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .search-wrapper,
+  .menu-toggle {
+    font-size: 12px !important;
+  }
+  .hero-content {
+    padding: 10px;
+    font-size: 13px;
+  }
+  .menu-section h2, .about-section h2, .contact-section h2 {
+    font-size: 1.06rem;
+  }
+  footer {
+    padding: 10px;
+    font-size: 0.8rem;
   }
 }

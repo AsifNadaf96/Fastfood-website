@@ -8,19 +8,25 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav>
-    <h1 class="nav-title">Fast Food</h1>
-    <div class="search-wrapper">
-      <input type="text" class="search-box" placeholder="Search for items...">
-      <button class="search-btn">🔍</button>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#home">HOME</a></li>
-      <li><a href="#menu">MENU</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li id="userIconNav"></li>
-    </ul>
-  </nav>
+<nav>
+  <h1 class="nav-title">Fast Food</h1>
+
+  <div class="search-wrapper">
+    <input type="text" class="search-box" placeholder="Search for items...">
+    <button class="search-btn">🔍</button>
+  </div>
+
+  <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">HOME</a></li>
+    <li><a href="#menu">MENU</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#contact">CONTACT</a></li>
+    <li id="userIconNav"></li>
+  </ul>
+</nav>
+
 
   <!-- Hero Section (backgrounds behind navbar and intro) -->
   <header class="hero" id="home">
@@ -85,6 +91,24 @@
     }
     updateNavbarUserIcon();
   </script>
+  <script>function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('active');
+}
+</script>
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+  }
+
+  // Hide menu on nav link click (better mobile UX)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('active');
+    });
+  });
+</script>
+
+
   <script src="script.js"></script>
 </body>
 </html>
