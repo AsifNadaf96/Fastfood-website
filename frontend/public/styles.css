@@ -1,76 +1,187 @@
+/* ===== Body with background image ===== */
 body {
-      background: linear-gradient(to right, #4e54c8, #8f94fb);
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-    .container {
-      text-align: center;
-    }
+/* ===== Container with frosted glass box ===== */
+.container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px 35px 50px 35px;
+  width: 320px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  animation: slideFadeIn 0.6s ease forwards;
+  color: #fff;
+  text-align: center;
+}
 
-    .login-box {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      width: 280px;
-      height: 380px;
-      color: white;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    input {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .forgot-password {
-      display: block;
-      text-align: right;
-      font-size: 12px;
-      margin-bottom: 10px;
-      color: #eee;
-      text-decoration: none;
-    }
-
-    .login-btn {
-    width: 40%;
-    padding: 12px;
-    background: linear-gradient(135deg, #667eea, #cab2e2); /* Better visibility */
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+/* ===== Slide and fade in animation ===== */
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
   }
-
-  .login-btn:hover {
-    background: linear-gradient(135deg, #4752b4, #9b79e9);
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
+/* ===== Heading ===== */
+h2 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+}
 
-    .social-icons img {
-      width: 30px;
-      margin: 10px;
-    }
+/* ===== Inputs ===== */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 14px 18px;
+  margin: 14px 0 20px 0;
+  border: none;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  color: #111;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
 
-    p {
-      margin-top: 10px;
-    }
+input::placeholder {
+  color: #555;
+  font-style: italic;
+}
 
-    a {
-      color: white;
-    }
+input:focus {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px 3px #667eeaaa;
+}
+
+/* ===== Forgot Password ===== */
+.forgot-password {
+  display: block;
+  text-align: right;
+  font-size: 0.85rem;
+  margin-bottom: 25px;
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #667eea;
+  text-decoration: underline;
+}
+
+/* ===== Colored Gradient Login Button with Animation ===== */
+.login-btn {
+  width: 100%;
+  padding: 16px 0;
+  background: linear-gradient(135deg, #667eea, #cab2e2);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  letter-spacing: 1.1px;
+  box-shadow: 0 6px 20px #665eddcc;
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #4955c3, #a38adb);
+  box-shadow: 0 8px 24px #4955c3cc;
+  transform: scale(1.05);
+}
+
+.login-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 16px #4955c3aa;
+}
+
+/* ===== Social Icons ===== */
+.social-icons {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.social-icons img {
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 0.3rem rgba(255, 255, 255, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 0.6rem #667eea);
+}
+
+/* ===== Paragraphs and Links ===== */
+p {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: #eee;
+}
+
+a {
+  color: #c4baff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ===== Responsive for smaller screens ===== */
+@media (max-width: 400px) {
+  .container {
+    width: 90vw;
+    padding: 30px 20px 40px 20px;
+    border-radius: 18px;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+  .login-btn {
+    font-size: 1.05rem;
+    padding: 14px 0;
+  }
+  .forgot-password {
+    font-size: 0.75rem;
+    margin-bottom: 18px;
+  }
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+}
